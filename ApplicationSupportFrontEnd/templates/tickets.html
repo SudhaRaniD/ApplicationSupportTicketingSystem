@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Support Tickets</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>All Support Tickets</h1>
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="tickets.html">All Tickets</a>
+            <a href="create_ticket.html">Create Ticket</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="ticket-container">
+            <h2>Ticket List</h2>
+
+            <table id="ticketsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Assigned To</th>
+                        <th>Due Date</th>
+                    </tr>
+                </thead>
+
+                <tbody id="ticketsBody">
+                    <tr>
+                        <td colspan="7">Loading tickets...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="../static/js/script.js"></script>
+</body>
+</html>

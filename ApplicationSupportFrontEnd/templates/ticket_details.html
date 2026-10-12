@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Details</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Ticket Details</h1>
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="tickets.html">All Tickets</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="ticket-container">
+
+            <h2 id="ticketTitle">Loading ticket...</h2>
+
+            <h3>Description</h3>
+            <p id="ticketDescription"></p>
+
+            <h3>Ticket Information</h3>
+
+            <p>
+                <strong>Ticket ID:</strong>
+                <span id="ticketId"></span>
+            </p>
+
+            <p>
+                <strong>Category:</strong>
+                <span id="ticketCategory"></span>
+            </p>
+
+            <p>
+                <strong>Priority:</strong>
+                <span id="ticketPriority"></span>
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+                <span id="ticketStatus"></span>
+            </p>
+
+            <p>
+                <strong>Assigned To:</strong>
+                <span id="ticketAssignee"></span>
+            </p>
+
+            <p>
+                <strong>Created At:</strong>
+                <span id="ticketCreated"></span>
+            </p>
+
+            <p>
+                <strong>Due Date:</strong>
+                <span id="ticketDue"></span>
+            </p>
+
+            <a href="tickets.html">← Back to All Tickets</a>
+
+        </div>
+    </main>
+
+    <script src="../static/js/script.js"></script>
+</body>
+</html>

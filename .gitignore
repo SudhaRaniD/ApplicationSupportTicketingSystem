@@ -1,0 +1,22 @@
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+.env
+*.db
+*.sqlite3
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+terraform.tfvars
+*.tfplan
+
+# Credentials
+*.pem
+*.key
+
+ApplicationSupportTerraform/lambda_function.zip
