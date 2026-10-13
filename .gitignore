@@ -20,3 +20,8 @@ terraform.tfvars
 *.key
 
 ApplicationSupportTerraform/lambda_function.zip
+application-support-deployment.zip
+
+deployment_package/
+deployment_wheels/
+application-support-deployment.zip
