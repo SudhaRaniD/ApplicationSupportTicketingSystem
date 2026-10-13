@@ -28,7 +28,7 @@ resource "aws_autoscaling_group" "application" {
     aws_lb_target_group.fastapi[0].arn
   ] : []
 
-  health_check_type         = "EC2"
+  health_check_type         = var.enable_alb ? "ELB" : "EC2"
   health_check_grace_period = 300
 
   tag {
