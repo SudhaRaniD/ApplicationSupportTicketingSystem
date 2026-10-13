@@ -39,6 +39,7 @@ resource "aws_lb_target_group" "fastapi" {
   target_type = "instance"
 
   health_check {
+    enabled             = true
     path                = "/health"
     protocol            = "HTTP"
     matcher             = "200"
