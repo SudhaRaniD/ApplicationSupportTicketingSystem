@@ -145,5 +145,39 @@ python3 -m venv "$APP_DIR/venv"
 
 echo "Python dependencies installed successfully."
 
+
+# Create systemd service for FastAPI
+cat > /etc/systemd/system/application-support.service <<'SERVICE'
+[Unit]
+Description=Application Support Ticketing System
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/application-support
+
+ExecStart=/opt/application-support/venv/bin/python -m uvicorn ApplicationSupportBackEnd.main:app --host 0.0.0.0 --port 8000
+
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+SERVICE
+
+# Reload systemd configuration
+systemctl daemon-reload
+
+# Enable application startup on boot
+systemctl enable application-support
+
+# Start FastAPI
+systemctl start application-support
+
+echo "FastAPI systemd service started."
+
+
 echo "Application files downloaded successfully."
 echo "Dependency installation and service startup are pending."
