@@ -134,5 +134,16 @@ if [ ! -f "$APP_DIR/ApplicationSupportBackEnd/main.py" ]; then
     exit 1
 fi
 
+# Create a Python virtual environment
+python3 -m venv "$APP_DIR/venv"
+
+# Install dependencies using local wheels only
+"$APP_DIR/venv/bin/python" -m pip install \
+  --no-index \
+  --find-links "$APP_DIR/deployment_wheels" \
+  -r "$APP_DIR/ApplicationSupportBackEnd/requirements.txt"
+
+echo "Python dependencies installed successfully."
+
 echo "Application files downloaded successfully."
 echo "Dependency installation and service startup are pending."
