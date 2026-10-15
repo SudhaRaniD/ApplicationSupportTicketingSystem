@@ -146,6 +146,21 @@ python3 -m venv "$APP_DIR/venv"
 echo "Python dependencies installed successfully."
 
 
+# RDS connection settings supplied by Terraform
+RDS_ENDPOINT="${rds_endpoint}"
+RDS_SECRET_ARN="${rds_secret_arn}"
+
+# Create a root-owned environment file
+install -m 600 -o root -g root /dev/null \
+  /etc/application-support.env
+
+{
+  printf 'AWS_REGION=eu-west-2\n'
+  printf 'RDS_ENDPOINT=%s\n' "$RDS_ENDPOINT"
+  printf 'RDS_SECRET_ARN=%s\n' "$RDS_SECRET_ARN"
+} > /etc/application-support.env
+
+
 # Create systemd service for FastAPI
 cat > /etc/systemd/system/application-support.service <<'SERVICE'
 [Unit]
@@ -156,6 +171,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 User=root
+EnvironmentFile=/etc/application-support.env
 WorkingDirectory=/opt/application-support
 
 ExecStart=/opt/application-support/venv/bin/python -m uvicorn ApplicationSupportBackEnd.main:app --host 0.0.0.0 --port 8000
