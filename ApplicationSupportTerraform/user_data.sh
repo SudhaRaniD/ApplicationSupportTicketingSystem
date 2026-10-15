@@ -135,7 +135,19 @@ if [ ! -f "$APP_DIR/ApplicationSupportBackEnd/main.py" ]; then
 fi
 
 # Create a Python virtual environment
-python3 -m venv "$APP_DIR/venv"
+#python3 -m venv "$APP_DIR/venv"
+
+# Verify Python 3.11 is available
+if ! command -v python3.11 >/dev/null 2>&1; then
+    echo "ERROR: Python 3.11 is not installed."
+    exit 1
+fi
+
+python3.11 --version
+
+# Create virtual environment
+python3.11 -m venv "$APP_DIR/venv"
+
 
 # Install dependencies using local wheels only
 "$APP_DIR/venv/bin/python" -m pip install \
@@ -155,6 +167,7 @@ install -m 600 -o root -g root /dev/null \
   /etc/application-support.env
 
 {
+  printf 'APP_ENV=aws\n'
   printf 'AWS_REGION=eu-west-2\n'
   printf 'RDS_ENDPOINT=%s\n' "$RDS_ENDPOINT"
   printf 'RDS_SECRET_ARN=%s\n' "$RDS_SECRET_ARN"
